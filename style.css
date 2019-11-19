@@ -72,7 +72,7 @@ p {
 =============*/
 .intro{
 	height: 750px;
-	background: #2c2f49 url(img/intro-bg.jpg) center no-repeat /cover ;
+	background: #2c2f49 url('img/intro-bg.jpg') center no-repeat /cover ;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
