@@ -30,6 +30,10 @@ p {
 
 
 /*Header
+============================*/
+
+
+/*Header
 =============*/
 .header {
 	position: absolute;
@@ -67,6 +71,12 @@ p {
 .nav__link:hover {
 	opacity: 1;
 }
+
+
+/*Main
+============================*/
+
+
 
 /*Intro
 =============*/
@@ -227,12 +237,129 @@ p {
 	font-size: 14px;
 	line-height: 1.5;
 }
+/*reviews
+=============*/
+.reviews{
+	background-color: #53354a;
+}
+.reviews__item {
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;	
+}
+.reviews__photo{
+	height: 500px;
+	width: 50%;	
+	position: relative;
+}
+.reviews__img{
+	position: absolute;
+	top:0;
+	right: 0;
+}
+.reviews__content{
+	width: 50%;	
+	padding: 60px;
+	display: flex;
+	flex-direction: column;		
+	justify-content: center;
+}
+.reviews__title {
+	font-size: 36px;
+	line-height: 1.25;	
+	font-family: 'Cardo', italic;
+	color: #fff;
+	margin-bottom: 30px;	
+}
+.reviews__author{
+	font-size: 13px;
+	text-transform: uppercase;
+	font-weight: 700;	
+	color: #fff;
+}
+/*get-start
+=============*/
+
+.get-start {
+	padding: 100px 0;
+	text-align: center;
+}
+
+.get-start__title{
+	font-size: 28px;
+	font-weight: 400;
+	margin-bottom: 15px;			
+}
+.get-start__subtitle{
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-bottom: 35px;
+}
+
+
+/*Footer
+============================*/
+
+/*about
+=============*/
+
+.about{
+	background: #3a3e64;
+}
+.about__inner{
+	padding: 60px 0 100px;
+	display: flex;
+	justify-content: space-around;
+}
+.about__item {
+	width: 33%;	
+	padding: 0 15px;
+	text-align: center;
+}
+.about__title{
+	font-weight: 700;	
+	font-size: 14px;
+	text-transform: uppercase;	
+	color: #fff;
+	margin-bottom: 10px;	
+}
+.about__content{
+	color: rgba(255,255,255,.5);
+}
+.about__address{
+	font-size: 14px;	
+	font-style: normal;
+	line-height: 1.6;
+
+}
+
+/*Copyright
+=============*/
+.copyright{
+	padding: 25px 0;
+	background-color: #313454;
+}
+
+.copyright__text{
+	text-align: center;
+}
+.copyright__author{
+	color: #fff;
+}
+
 
 /*Social
 =============*/
 .social {
 	display: flex;
 }
+.social--footer {
+	justify-content: center;
+}
+
 .social__item{
 	display: flex;
 	align-items: center;
@@ -243,9 +370,24 @@ p {
 	border: 1px solid #c6cacc;
 	transition: border-color .2s linear;
 }
+.social__item:last-child{
+	margin-right: 0;
+}
+
+.social--footer .social__item{
+	border-width: 2px;
+	border-color: #fff;
+	border-radius: 2px;
+}
+
+.social--footer .social__item:hover{
+	background-color: #fff;
+}
+
 .social__item:hover {
 	border-color: #000;
 }
+
 
 .social__item:hover .social__icon {
 	fill: #000;
@@ -281,7 +423,9 @@ p {
 .btn--red:hover {
 	background: #df2727;
 }
-
+.btn--download {
+	padding: 15px 75px;
+}
 
 
 
