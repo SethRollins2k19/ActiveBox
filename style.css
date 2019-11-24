@@ -580,17 +580,32 @@ p {
 	/*Reviews
 	=============*/
 	.reviews__content{
+		width: 100%;	
 		padding: 15px;
 	}
+	.reviews__item{
+		justify-content: center;
+	}
 	.reviews__title{
-		font-size: 16px;
+		font-size: 20px;
+		margin-bottom: 15px;
 	}
 	.reviews__author{
-		font-size: 5px;
+		font-size: 8px;
 	}
 	.reviews__photo{
-		height: 250px;
+		height: 300px;
+		width: 100%;	
 	}
+
+	/*Container
+	=============*/
+	
+	.container--reviews {
+		padding: 0;
+	}
+
+
 }
 
 
