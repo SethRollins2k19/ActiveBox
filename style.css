@@ -532,6 +532,12 @@ p {
 		height: auto;
 		padding: 130px 0 75px;
 	}
+	/*btn
+	=============*/
+	.btn--download {
+	padding: 15px 75px;
+	}
+	
 }
 
 @media (max-width: 590px){
@@ -552,6 +558,10 @@ p {
 		font-size: 9px;
 		padding: 10px 20px;
 	}
+	.btn--download {
+	padding: 10px 50px;
+	}
+	
 /*	.works__item{
 		width: 50%;
 		height: 175px;
@@ -570,6 +580,22 @@ p {
 		width: 100%;
 		text-align: center;
 	}
+	/*get-start
+	==============*/
+
+	.get-start {
+	padding: 50px 0;
+	}
+
+	.get-start__title{
+		font-size: 20px;
+		margin-bottom: 15px;			
+	}
+	.get-start__subtitle{
+		font-size: 10px;
+		margin-bottom: 20px;
+	}
+
 
 	/*social
 	=============*/
@@ -604,6 +630,7 @@ p {
 	.container--reviews {
 		padding: 0;
 	}
+	
 
 
 }
