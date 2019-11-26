@@ -23,6 +23,13 @@ let sliderItems = [
 ]
 
 
+document.querySelector('.burger').addEventListener('click', (e)=>{
+	document.querySelector('.nav').classList.toggle('nav--active');
+})
+
+
+
+
 sliderItems.forEach((item) => {
  	document.querySelector('.reviews__inner').appendChild(createSliderItem(item));
 })
@@ -73,29 +80,35 @@ links.forEach((item) => {
   		let timer = setInterval(() => {
 			if (pageYOffset < contPos || counterClickOnLink > 1){
 				clearInterval(timer);
+				document.querySelector('.nav').classList.toggle('nav--active');
 				counterClickOnLink --;
 			} else {
 				scrollTo(0, ourPos);
 				ourPos-=10;
 			}
- 	}, 10)
+ 	}, 5)
   	} else {
   	let timer = setInterval(() => {
-		if (pageYOffset > contPos || counterClickOnLink > 1){
+		if (pageYOffset > contPos || counterClickOnLink > 1 || ourPos > document.body.offsetHeight - document.querySelector('.about__inner').offsetHeight -  document.querySelector('.reviews').offsetHeight){
 			clearInterval(timer);
+			document.querySelector('.nav').classList.toggle('nav--active');
 			counterClickOnLink --;
 		} else {
 			scrollTo(0, ourPos);
 			ourPos+=10;
 		}
- 	}, 10)
+ 	}, 5)
   	}
 
   	
   })
 })
 //document.querySelector('.team').getBoundingClientRect().top + pageYOffset
-
+if (window.pageYOffset >= document.querySelector('.intro').offsetHeight-60){
+		document.querySelector('.header').classList.add('header--inmotion');
+	} else {
+		document.querySelector('.header').classList.remove('header--inmotion');
+	}
 document.addEventListener('scroll', (e)=>{
 	if (window.pageYOffset >= document.querySelector('.intro').offsetHeight-60){
 		document.querySelector('.header').classList.add('header--inmotion');
