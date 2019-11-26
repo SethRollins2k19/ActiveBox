@@ -22,6 +22,89 @@ let sliderItems = [
 	}
 ]
 
+
+sliderItems.forEach((item) => {
+ 	document.querySelector('.reviews__inner').appendChild(createSliderItem(item));
+})
+
+document.querySelector('.fa-caret-right').addEventListener('click', (e) =>{
+	let sliderItemCenterLeft = 0;
+	let centerRight = 350;
+	let timer = setInterval(moveCard, 25)
+
+	function moveCard() {
+		if (sliderItemCenterLeft>centerRight){
+			clearInterval(timer);
+			changeActiveSlide();
+		} else {
+			document.querySelector('.reviews--active').style.left = sliderItemCenterLeft + '%';
+			sliderItemCenterLeft+=50;
+		}
+	}
+	
+})
+
+document.querySelector('.fa-caret-left').addEventListener('click', (e) =>{
+	let sliderItemCenterLeft = 0;
+	let centerRight = -350;
+	let timer = setInterval(moveCard, 25)
+
+	function moveCard() {
+		if (sliderItemCenterLeft<centerRight){
+			clearInterval(timer);
+			changeActiveSlide();
+		} else {
+			document.querySelector('.reviews--active').style.left = sliderItemCenterLeft + '%';
+			sliderItemCenterLeft-=50;
+		}
+	}
+
+})
+
+let links = document.querySelectorAll('.nav__link');
+let counterClickOnLink = 0;
+links.forEach((item) => {
+  item.addEventListener('click',(e)=>{
+  	e.preventDefault();
+  	counterClickOnLink ++;
+  	let ourPos = pageYOffset;
+  	let contPos = document.querySelector(item.dataset.linkId).getBoundingClientRect().top + pageYOffset - 50;
+  	if (ourPos > contPos){
+  		let timer = setInterval(() => {
+			if (pageYOffset < contPos || counterClickOnLink > 1){
+				clearInterval(timer);
+				counterClickOnLink --;
+			} else {
+				scrollTo(0, ourPos);
+				ourPos-=10;
+			}
+ 	}, 10)
+  	} else {
+  	let timer = setInterval(() => {
+		if (pageYOffset > contPos || counterClickOnLink > 1){
+			clearInterval(timer);
+			counterClickOnLink --;
+		} else {
+			scrollTo(0, ourPos);
+			ourPos+=10;
+		}
+ 	}, 10)
+  	}
+
+  	
+  })
+})
+//document.querySelector('.team').getBoundingClientRect().top + pageYOffset
+
+document.addEventListener('scroll', (e)=>{
+	if (window.pageYOffset >= document.querySelector('.intro').offsetHeight-60){
+		document.querySelector('.header').classList.add('header--inmotion');
+	} else {
+		document.querySelector('.header').classList.remove('header--inmotion');
+	}
+})
+
+
 function createSliderItem (sliderItem){
 	let sliderCard = document.createElement('div');
 	sliderCard.classList.add('reviews__item');
@@ -54,48 +137,11 @@ function createSliderItem (sliderItem){
 
 	return sliderCard;
 }
-sliderItems.forEach((item) => {
- 	document.querySelector('.reviews__inner').appendChild(createSliderItem(item));
-})
-document.querySelector('.fa-caret-right').addEventListener('click', (e) =>{
-	let sliderItemCenterLeft = 0;
-	let centerRight = 350;
-	let timer = setInterval(moveCard, 25)
 
-	function moveCard() {
-		if (sliderItemCenterLeft>centerRight){
-			clearInterval(timer);
-			changeActiveSlide();
-		} else {
-			document.querySelector('.reviews--active').style.left = sliderItemCenterLeft + '%';
-			sliderItemCenterLeft+=50;
-		}
-	}
-	
-})
-document.querySelector('.fa-caret-left').addEventListener('click', (e) =>{
-	let sliderItemCenterLeft = 0;
-	let centerRight = -350;
-	let timer = setInterval(moveCard, 25)
 
-	function moveCard() {
-		if (sliderItemCenterLeft<centerRight){
-			clearInterval(timer);
-			changeActiveSlide();
-		} else {
-			document.querySelector('.reviews--active').style.left = sliderItemCenterLeft + '%';
-			sliderItemCenterLeft-=50;
-		}
-	}
-
-})
-// 2050px
 
 function changeActiveSlide(){
-
-	// let allItem = [];
 	let slideItems = document.querySelectorAll('.reviews__item');
-
 	slideItems.forEach((item) => {
 		item.style.zIndex = 1 + Number(item.style.zIndex); 
 		if (new Number(item.style.zIndex) == 3){
@@ -107,6 +153,27 @@ function changeActiveSlide(){
 		}
 	})
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// for (let i = 0; i < sliderItems; i++){
 	// 	let woop = {
