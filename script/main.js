@@ -80,7 +80,7 @@ links.forEach((item) => {
   		let timer = setInterval(() => {
 			if (pageYOffset < contPos || counterClickOnLink > 1){
 				clearInterval(timer);
-				document.querySelector('.nav').classList.toggle('nav--active');
+				document.querySelector('.nav').classList.remove('nav--active');
 				counterClickOnLink --;
 			} else {
 				scrollTo(0, ourPos);
@@ -91,7 +91,7 @@ links.forEach((item) => {
   	let timer = setInterval(() => {
 		if (pageYOffset > contPos || counterClickOnLink > 1 || ourPos > document.body.offsetHeight - document.querySelector('.about__inner').offsetHeight -  document.querySelector('.reviews').offsetHeight){
 			clearInterval(timer);
-			document.querySelector('.nav').classList.toggle('nav--active');
+			document.querySelector('.nav').classList.remove('nav--active');
 			counterClickOnLink --;
 		} else {
 			scrollTo(0, ourPos);

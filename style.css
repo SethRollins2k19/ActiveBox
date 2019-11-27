@@ -58,7 +58,7 @@ p {
 	background: #2c2f49;
 }
 .header--inmotion .header__inner {
-	padding: 15px 0;
+	padding: 15px;
 	border: none;
 }
 /*Nav
@@ -505,11 +505,19 @@ p {
 	
 	/*Header
 	=============*/
+	.header .container {
+		padding: 0;
+	}
+
+	.header__inner {
+		border: none;
+	}
 	.header__inner{
 		flex-wrap: wrap;
 	}
 	.nav{
 		display: none;
+		background: #2c2f49;
 		flex-direction: column;
 		color: black;
 		order: 10;
