@@ -14,10 +14,11 @@ const jsFiles = ['./script/main.js'];
 function bSync() {
     browserSync.init({
         server: {
-            baseDir: './'
+            baseDir: './docs'
         },
         notify: false
     })
+    console.log('Prebuild')
 }
 
 function style() {
@@ -30,7 +31,7 @@ function style() {
         .pipe(cleanCSS({
             level: 2
         }))
-        .pipe(gulp.dest('./build/css'))
+        .pipe(gulp.dest('./docs/css'))
         .pipe(browserSync.reload({stream: true}))
 }
 
@@ -41,7 +42,7 @@ function script() {
             presets: [env]
         }))
         .pipe(minify())
-        .pipe(gulp.dest('./build/js'))
+        .pipe(gulp.dest('./docs/js'))
         .pipe(browserSync.reload({stream: true}))
 
 }
@@ -49,19 +50,20 @@ function script() {
 
 function htmlCode() {
     return gulp.src('index.html')
-        .pipe(gulp.dest('./build/'))
+        .pipe(gulp.dest('docs/'))
         .pipe(browserSync.reload({stream: true}))
 }
+function preBuild(){
+        gulp.watch("index.html",gulp.series(htmlCode))
+        gulp.watch("css/**/*.css",gulp.series(style))
+        gulp.watch("script/**/*.js",gulp.series(script))
+}
+
+
 gulp.task('html', htmlCode);
 gulp.task('style', style);
 gulp.task('scripts', script);
-gulp.task('preBuild', function () {
-    gulp.parallel()
-    gulp.watch('index.html', gulp.parallel('html'));
-    gulp.watch('css/**/*.css', gulp.parallel('style'));
-    gulp.watch('script/**/*.js', gulp.parallel('scripts'));
-})
-gulp.task("build", gulp.series('html', 'style', 'scripts'))
+gulp.task('preBuild',preBuild)
 gulp.task('brSync', bSync);
-
+gulp.task("build", gulp.series('html', 'style', 'scripts'))
 gulp.task('watch', gulp.parallel('brSync', 'preBuild'));
